@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1 class="gradient-text">System Architecture</h1>
+        <p>Discover the deep learning models, computer vision engines, and audio synthesizers running under the hood of MoodTunes.</p>
+    </div>
+
+    <div class="glass-panel" style="margin-bottom: 3rem;">
+        <h2 style="color: var(--secondary); margin-bottom: 1rem;"><i class="fas fa-microchip" style="margin-right: 10px;"></i> The Generative Core</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-main); opacity: 0.9;">
+            MoodTunes operates on a custom-trained <strong>Conditional Long Short-Term Memory (LSTM)</strong> neural network. Trained on the curated EMOPIA dataset, the model features 512-unit memory cells capable of understanding complex musical phrasing over time. By translating human psychological states (Valence and Arousal) into dense mathematical embeddings, the network autonomously predicts the optimal sequence of notes, velocities, and tempos to directly mirror your current mood.
+        </p>
+    </div>
+
+    <h2 style="text-align: center; margin-bottom: 2rem; font-family: 'Outfit', sans-serif;">Technology Stack</h2>
+    <div class="steps-grid">
+        <div class="glass-card step-card">
+            <i class="fas fa-brain step-icon"></i>
+            <h3>Machine Learning</h3>
+            <p>TensorFlow and Keras power the sequential network. DeepFace and OpenCV's Haar Cascades handle millisecond-level facial recognition.</p>
+        </div>
+        
+        <div class="glass-card step-card">
+            <i class="fas fa-server step-icon"></i>
+            <h3>Backend Infrastructure</h3>
+            <p>A robust Python Flask REST API handles data sanitization, algorithmic failsafes, and zero-crash neural routing.</p>
+        </div>
+
+        <div class="glass-card step-card">
+            <i class="fas fa-sliders-h step-icon"></i>
+            <h3>Audio Synthesis</h3>
+            <p>Tone.js natively synthesizes audio in the browser, translating raw MIDI arrays into studio-quality FM, AM, and Pluck waveforms.</p>
+        </div>
+
+        <div class="glass-card step-card">
+            <i class="fas fa-code step-icon"></i>
+            <h3>Frontend Interface</h3>
+            <p>Vanilla JS and HTML5 Canvas ensure zero-latency UI updates, real-time waveform rendering, and client-side image compression.</p>
+        </div>
+    </div>
+
+    <div class="glass-panel" style="margin-top: 3rem; text-align: center; padding: 2rem;">
+        <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem; text-shadow: 0 0 20px rgba(157, 78, 221, 0.5);"></i>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Zero Data Persistence</h3>
+        <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.6; font-size: 1.1rem;">
+            Privacy is hardcoded into our architecture. Visual inputs are processed entirely in active memory (RAM) strictly for emotional vector extraction and are <strong>instantly destroyed</strong>. We do not store, log, or train on any user biometric data.
+        </p>
+    </div>
+</div>
+{% endblock %}

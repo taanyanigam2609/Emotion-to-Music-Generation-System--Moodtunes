@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1 class="gradient-text">Frequently Asked Questions</h1>
+        <p>Technical specifications and usage guidelines for the MoodTunes platform.</p>
+    </div>
+
+    <div class="glass-panel">
+        <div class="faq-grid">
+            <div class="glass-card faq-item">
+                <h3>What happens to my webcam data?</h3>
+                <p>Zero data persistence. Your image is temporarily held in active memory (RAM) just long enough for the DeepFace algorithm to extract the emotion vector, and is instantly discarded. No images are ever saved to a database.</p>
+            </div>
+            
+            <div class="glass-card faq-item">
+                <h3>Why does the model have a ~30% accuracy rate?</h3>
+                <p>In generative AI, 100% accuracy means "overfitting" (copying the training data exactly). An accuracy of 30% is the mathematical sweet spot where the AI understands musical rules (scales/chords) but retains enough freedom to compose highly original melodies.</p>
+            </div>
+
+            <div class="glass-card faq-item">
+                <h3>What is "AI Creativity (Temperature)"?</h3>
+                <p>Temperature is a mathematical modifier applied to the LSTM's output probabilities. A lower value (0.5) creates predictable, standard melodies. A higher value (1.5+) forces the AI to choose less likely notes, resulting in chaotic, jazzy, or unpredictable compositions.</p>
+            </div>
+
+            <div class="glass-card faq-item">
+                <h3>What happens if the AI fails to load?</h3>
+                <p>MoodTunes features a "Zero-Crash" architecture. If the neural network is offline or missing, a built-in algorithmic failsafe mathematically maps specific musical scales to your emotion to guarantee you always receive a playable track.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

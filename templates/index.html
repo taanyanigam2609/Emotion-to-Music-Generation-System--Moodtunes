@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="text-align: center; margin-top: 5vh;">
+    <h1 class="gradient-text" style="font-size: 4.5rem; margin-bottom: 1rem; animation: none; background-position: 0%;">
+        Hear Your Emotions.
+    </h1>
+    <p style="font-size: 1.3rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 3rem auto; line-height: 1.6;">
+        MoodTunes uses advanced computer vision and neural networks to analyze your psychological state in real-time and synthesize original, high-fidelity music perfectly tailored to your mood.
+    </p>
+    
+    <div style="display: flex; gap: 1.5rem; justify-content: center;">
+        <a href="{{ url_for('generate_page') }}" class="btn-glow">Enter AI Studio <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+        <a href="{{ url_for('howitworks') }}" class="btn-outline">View Architecture</a>
+    </div>
+
+    <div class="steps-grid" style="margin-top: 5rem;">
+        <div class="glass-card">
+            <i class="fas fa-camera step-icon" style="font-size: 2rem;"></i>
+            <h3>Multi-Modal Input</h3>
+            <p>Use your webcam, upload a photo, or type text. Our AI instantly reads your psychological baseline.</p>
+        </div>
+        <div class="glass-card">
+            <i class="fas fa-brain step-icon" style="font-size: 2rem;"></i>
+            <h3>LSTM Synthesis</h3>
+            <p>Our deep learning brain composes a 100% unique MIDI track based on mathematical mood mapping.</p>
+        </div>
+        <div class="glass-card">
+            <i class="fas fa-headphones step-icon" style="font-size: 2rem;"></i>
+            <h3>Studio Playback</h3>
+            <p>Experience zero-latency rendering with Tone.js, featuring master limiters and rich digital synthesizers.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

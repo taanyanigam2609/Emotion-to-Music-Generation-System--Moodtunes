@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1 class="gradient-text">The Workflow</h1>
+        <p>From visual capture to audio synthesis, discover how the MoodTunes pipeline operates in milliseconds.</p>
+    </div>
+
+    <div class="steps-grid">
+        <div class="glass-card step-card">
+            <i class="fas fa-expand step-icon"></i>
+            <h3>1. Data Capture</h3>
+            <p>The frontend captures your visual or textual input. Images are compressed instantly via HTML5 Canvas to ensure lightning-fast, lightweight payloads before securely transmitting to the Flask backend.</p>
+        </div>
+        
+        <div class="glass-card step-card">
+            <i class="fas fa-microchip step-icon"></i>
+            <h3>2. Psychological Mapping</h3>
+            <p>OpenCV and DeepFace analyze the data, mapping facial micro-expressions into Russell’s Circumplex Model (Valence/Arousal) to determine your precise emotional quadrant.</p>
+        </div>
+
+        <div class="glass-card step-card">
+            <i class="fas fa-network-wired step-icon"></i>
+            <h3>3. Neural Composition</h3>
+            <p>A Conditional LSTM network receives your emotion ID and stylistic parameters. It predicts the optimal sequence of musical notes, applying temperature scaling for unique creativity.</p>
+        </div>
+
+        <div class="glass-card step-card">
+            <i class="fas fa-wave-square step-icon"></i>
+            <h3>4. Browser Synthesis</h3>
+            <p>The raw MIDI data is sent back to your browser where Tone.js natively synthesizes the audio. The track is routed through a Master Limiter and Reverb channel for studio-quality sound.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

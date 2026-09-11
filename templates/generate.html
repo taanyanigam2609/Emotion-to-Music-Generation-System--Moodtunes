@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="studio-container glass-panel">
+    
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('input')">1. Emotion Input</button>
+        <button class="tab-btn" onclick="switchTab('controls')">2. Neural Controls</button>
+        <button class="tab-btn" onclick="switchTab('visualizer')">3. Audio Render</button>
+    </div>
+
+    <div id="input" class="tab-content active">
+        
+        <div class="input-type-selector mb-2">
+            <button class="btn-outline active" onclick="switchInputType('webcam')">📷 Live Webcam</button>
+            <button class="btn-outline" onclick="switchInputType('upload')">🖼️ Upload Image</button>
+            <button class="btn-outline" onclick="switchInputType('text')">✍️ Text Sentiment</button>
+        </div>
+
+        <div class="split-view">
+            <div class="video-wrapper" id="inputArea">
+                
+                <div id="webcamBox">
+                    <video id="webcam" autoplay muted></video>
+                    <div class="scanning-overlay"></div>
+                </div>
+
+                <div id="uploadBox" style="display:none; text-align:center; padding: 2rem;">
+                    <h3 class="glow-text">Upload a Photo</h3>
+                    <input type="file" id="imageUpload" accept="image/*" class="glass-select mt-2">
+                    <img id="uploadPreview" style="max-width: 100%; border-radius: 8px; margin-top: 1rem; display: none;">
+                </div>
+
+                <div id="textBox" style="display:none; padding: 1rem;">
+                    <h3 class="glow-text">How are you feeling?</h3>
+                    <textarea id="textInput" rows="5" placeholder="Type your thoughts or feelings here..." style="width: 100%; padding: 1rem; border-radius: 8px; background: rgba(0,0,0,0.5); color: white; border: 1px solid var(--primary);"></textarea>
+                    <button id="analyzeTextBtn" class="btn-glow mt-2">Analyze Sentiment</button>
+                </div>
+            </div>
+
+            <div class="chart-wrapper">
+                <h3 class="glow-text">Emotion Analysis</h3>
+                <canvas id="emotionChart"></canvas>
+                <div class="detected-status">
+                    Target Vibe: <span id="currentEmotion" class="gradient-text blink">Waiting for input...</span>
+                </div>
+            </div>
+        </div>
+        <button class="btn-glow next-tab-btn mt-2" onclick="switchTab('controls')">Configure Generation ➔</button>
+    </div>
+
+    <div id="controls" class="tab-content">
+        <div class="controls-grid">
+            <div class="control-card glass-inner">
+                <label>Energy Intensity</label>
+                <input type="range" id="intensity" min="1" max="10" value="5">
+                <span class="val-display" id="val-intensity">5</span>
+                <small>Affects tempo and strike velocity.</small>
+            </div>
+            <div class="control-card glass-inner">
+                <label>AI Creativity (Temperature)</label>
+                <input type="range" id="creativity" min="0.1" max="2.0" step="0.1" value="1.0">
+                <span class="val-display" id="val-creativity">1.0</span>
+                <small>Higher values create unpredictable melodies.</small>
+            </div>
+            <div class="control-card glass-inner">
+                <label>Composition Style</label>
+                <select id="style" class="glass-select">
+                    <option value="0">Acoustic Piano</option>
+                    <option value="1">LoFi Beats</option>
+                    <option value="2">Classical</option>
+                    <option value="3">Ambient Space</option>
+                </select>
+            </div>
+            <div class="control-card glass-inner">
+                <label>Synthesis Instrument</label>
+                <select id="instrument" class="glass-select">
+                    <option value="synth">FmSynth (Electronic)</option>
+                    <option value="piano">PolySynth (Classic)</option>
+                    <option value="pluck">PluckSynth (Strings)</option>
+                </select>
+            </div>
+        </div>
+        
+        <button id="generateBtn" class="btn-glow massive-btn">⚡ Synthesize Audio Track</button>
+        
+        <div id="loadingIndicator" style="display:none;" class="loader-container">
+            <div class="spinner"></div>
+            <p class="glow-text">Neural Network Processing...</p>
+        </div>
+    </div>
+
+    <div id="visualizer" class="tab-content">
+        <div class="visualizer-container">
+            <canvas id="audioCanvas"></canvas>
+        </div>
+        <div class="player-bar" id="playerControls" style="opacity: 0.3; pointer-events: none;">
+            <button id="playBtn" class="btn-play">▶ Play Sequence</button>
+            <button id="stopBtn" class="btn-stop">⏹ Halt</button>
+            <a id="downloadBtn" class="btn-download" href="" download>↓ Download MIDI</a>
+        </div>
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}
